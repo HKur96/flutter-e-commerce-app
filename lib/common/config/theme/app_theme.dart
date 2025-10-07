@@ -27,6 +27,7 @@ class CustomTheme {
     ),
     extensions: [
       const AppPalette(
+        backgroundColor: Color(0xffFAFAFA),
         blueOcean: Color(0xFF3669C9),
         orangeFresh: Color(0xFFFDA429),
         navyBlack: Color(0xFF13181F),
@@ -77,92 +78,92 @@ class CustomTheme {
     },
   );
 
-  static const TextTheme textTheme = TextTheme(
-    displayLarge: TextStyle(
+  static TextTheme textTheme = TextTheme(
+    displayLarge: GoogleFonts.dmSans(
       fontSize: 57,
       fontWeight: FontWeight.w400,
       height: 1.123,
       letterSpacing: 0,
     ),
-    displayMedium: TextStyle(
+    displayMedium: GoogleFonts.dmSans(
       fontSize: 45,
       fontWeight: FontWeight.w400,
       height: 1.55,
       letterSpacing: 0,
     ),
-    displaySmall: TextStyle(
+    displaySmall: GoogleFonts.dmSans(
       fontSize: 36,
       fontWeight: FontWeight.w400,
       height: 1.22,
       letterSpacing: 0,
     ),
-    headlineLarge: TextStyle(
+    headlineLarge: GoogleFonts.dmSans(
       fontSize: 32,
       fontWeight: FontWeight.w400,
       height: 1.25,
       letterSpacing: 0,
     ),
-    headlineMedium: TextStyle(
+    headlineMedium: GoogleFonts.dmSans(
       fontSize: 28,
       fontWeight: FontWeight.w400,
       height: 1.2857,
       letterSpacing: 0,
     ),
-    headlineSmall: TextStyle(
+    headlineSmall: GoogleFonts.dmSans(
       fontSize: 24,
       fontWeight: FontWeight.w400,
       height: 1.33,
       letterSpacing: 0,
     ),
-    titleLarge: TextStyle(
+    titleLarge: GoogleFonts.dmSans(
       fontSize: 22,
       fontWeight: FontWeight.w500,
       height: 1.2727,
       letterSpacing: 0,
     ),
-    titleMedium: TextStyle(
+    titleMedium: GoogleFonts.dmSans(
       fontSize: 16,
       fontWeight: FontWeight.w500,
       height: 1.5,
       letterSpacing: 0.15,
     ),
-    titleSmall: TextStyle(
+    titleSmall: GoogleFonts.dmSans(
       fontSize: 14,
       fontWeight: FontWeight.w500,
       height: 1.42857,
       letterSpacing: 0.1,
     ),
-    labelLarge: TextStyle(
+    labelLarge: GoogleFonts.dmSans(
       fontSize: 14,
       fontWeight: FontWeight.w500,
       height: 1.42857,
       letterSpacing: 0.1,
     ),
-    labelMedium: TextStyle(
+    labelMedium: GoogleFonts.dmSans(
       fontSize: 12,
       fontWeight: FontWeight.w500,
       height: 1.33,
       letterSpacing: 0.5,
     ),
-    labelSmall: TextStyle(
+    labelSmall: GoogleFonts.dmSans(
       fontSize: 11,
       fontWeight: FontWeight.w500,
       height: 1.4545,
       letterSpacing: 0.5,
     ),
-    bodyLarge: TextStyle(
+    bodyLarge: GoogleFonts.dmSans(
       fontSize: 16,
       fontWeight: FontWeight.w400,
       height: 1.5,
       letterSpacing: 0.15,
     ),
-    bodyMedium: TextStyle(
+    bodyMedium: GoogleFonts.dmSans(
       fontSize: 14,
       fontWeight: FontWeight.w400,
       height: 1.42857,
       letterSpacing: 0.25,
     ),
-    bodySmall: TextStyle(
+    bodySmall: GoogleFonts.dmSans(
       fontSize: 12,
       fontWeight: FontWeight.w400,
       height: 1.33,

@@ -1,3 +1,9 @@
 {
-  "dart.flutterSdkPath": ".fvm/versions/3.29.0"
+  "dart.flutterSdkPath": ".fvm/versions/3.29.0",
+  "dart.showTodos": false,
+  "dart.lineLength": 100,
+  "dart.maxCompletionItems": 50,
+  "dart.enableSdkFormatter": true,
+  "dart.runPubGetOnPubspecChanges": "prompt",
+  "dart.checkForSdkUpdates": false,
 }

@@ -1,10 +1,26 @@
 import 'package:dio/dio.dart';
 import 'package:ecommerce_app/common/config/extensions.dart';
 import 'package:ecommerce_app/common/config/global.dart';
+import 'package:ecommerce_app/common/helper/secure_storage.dart';
 import 'package:flutter/material.dart';
 
 class DioLoggingInterceptor extends InterceptorsWrapper {
   SnackBar? _snackBar;
+
+  @override
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+    if (options.path.contains('signin') || options.path.contains('signup')) {
+      super.onRequest(options, handler);
+      return;
+    }
+    final user = await SecureStorage().getUser();
+
+    if (user?.token != null) {
+      options.headers['Authorization'] = 'Bearer ${user!.token}';
+    }
+
+    super.onRequest(options, handler);
+  }
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {

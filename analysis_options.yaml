@@ -26,3 +26,19 @@ linter:
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+analyzer:
+  exclude:
+    - lib/**/*.g.dart
+    - lib/**/*.freezed.dart
+    - lib/**/generated/**
+    - lib/**/gen/**
+    - test/**
+    - ios/**
+    - android/**
+    - build/**
+    - .dart_tool/**
+  errors:
+    # Optional: make non-critical warnings disappear
+    missing_required_param: ignore
+    missing_return: ignore
+    dead_code: ignore

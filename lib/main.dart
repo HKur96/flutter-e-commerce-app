@@ -5,6 +5,7 @@ import 'package:ecommerce_app/common/shared/splash_screen.dart';
 import 'package:ecommerce_app/common/utils/injector.dart';
 import 'package:ecommerce_app/features/auth/presentation/provider/auth_provider.dart';
 import 'package:ecommerce_app/features/counter/presentation/providers/counter_provider.dart';
+import 'package:ecommerce_app/features/home/presentation/provider/home_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -44,6 +45,7 @@ class MainApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => CounterProvider()),
         ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => HomeProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

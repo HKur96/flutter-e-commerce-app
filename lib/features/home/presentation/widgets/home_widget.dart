@@ -1,9 +1,20 @@
 import 'package:ecommerce_app/common/config/extensions.dart';
+import 'package:ecommerce_app/features/auth/domain/entity/user.dart';
+import 'package:ecommerce_app/features/auth/presentation/provider/auth_provider.dart';
+import 'package:ecommerce_app/features/home/presentation/widgets/categories_home_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
-class HomeWidget extends StatelessWidget {
+class HomeWidget extends StatefulWidget {
   const HomeWidget({super.key});
+
+  @override
+  State<HomeWidget> createState() => _HomeWidgetState();
+}
+
+class _HomeWidgetState extends State<HomeWidget> {
+  late final User? _user = context.read<AuthProvider>().user;
 
   @override
   Widget build(BuildContext context) {
@@ -11,18 +22,7 @@ class HomeWidget extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       slivers: [
         _buildAppBar(context),
-        SliverPadding(
-          padding: EdgeInsets.all(10.0),
-          sliver: SliverList(
-            delegate: SliverChildListDelegate(List.generate(
-              20,
-              (index) => ListTile(
-                leading: CircleAvatar(child: Text('$index')),
-                title: Text('Appbar with dynamic height'),
-              ),
-            )),
-          ),
-        ),
+        CategoriesHomeWidget(user: _user),
       ],
     );
   }

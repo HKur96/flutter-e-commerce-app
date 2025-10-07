@@ -5,7 +5,7 @@ import 'package:ecommerce_app/common/shared/widget/custom_button.dart';
 import 'package:ecommerce_app/common/shared/widget/custom_text_form_field.dart';
 import 'package:ecommerce_app/features/auth/domain/dto/signin_dto.dart';
 import 'package:ecommerce_app/features/auth/presentation/provider/auth_provider.dart';
-import 'package:ecommerce_app/features/home/presentation/screens/home_screen.dart';
+import 'package:ecommerce_app/features/home/presentation/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -31,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: context.palette.backgroundColor,
       body: _buildBody(),
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
