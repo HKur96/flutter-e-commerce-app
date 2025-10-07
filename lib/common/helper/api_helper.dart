@@ -14,11 +14,6 @@ class ApiHelper {
           connectTimeout: connectTimeout ?? const Duration(seconds: 60),
           receiveTimeout: receiveTimeout ?? const Duration(seconds: 60),
           baseUrl: baseUrl,
-          headers: {
-            "X-API-KEY": kDebugMode
-                ? const String.fromEnvironment('X-API-KEY_DEV')
-                : const String.fromEnvironment('X_API_KEY_PROD'),
-          },
         ))
           ..interceptors.addAll([
             RequestsInspectorInterceptor(),

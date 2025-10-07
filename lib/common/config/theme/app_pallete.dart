@@ -8,6 +8,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
   final Color orangeFresh;
   final Color navyBlack;
   final Color pureWhite;
+  final Color backgroundColor;
 
   // === Secondary ===
   final Color earthGreen;
@@ -22,6 +23,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
   final Color offRed;
 
   const AppPalette({
+    required this.backgroundColor,
     required this.blueOcean,
     required this.orangeFresh,
     required this.navyBlack,
@@ -50,6 +52,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
     Color? offBlue,
     Color? offGreen,
     Color? offRed,
+    Color? backgroundColor,
   }) {
     return AppPalette(
       blueOcean: blueOcean ?? this.blueOcean,
@@ -64,10 +67,9 @@ class AppPalette extends ThemeExtension<AppPalette> {
       offBlue: offBlue ?? this.offBlue,
       offGreen: offGreen ?? this.offGreen,
       offRed: offRed ?? this.offRed,
+      backgroundColor: backgroundColor ?? this.backgroundColor,
     );
   }
-
-  
 
   @override
   ThemeExtension<AppPalette> lerp(ThemeExtension<AppPalette>? other, double t) {
@@ -85,6 +87,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
       offBlue: Color.lerp(offBlue, other.offBlue, t)!,
       offGreen: Color.lerp(offGreen, other.offGreen, t)!,
       offRed: Color.lerp(offRed, other.offRed, t)!,
+      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t)!,
     );
   }
 }

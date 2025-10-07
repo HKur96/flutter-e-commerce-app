@@ -6,6 +6,9 @@ import 'package:ecommerce_app/features/counter/data/datasources/counter_datasour
 import 'package:ecommerce_app/features/counter/data/repositories/counter_repository_impl.dart';
 import 'package:ecommerce_app/features/counter/domain/repositories/counter_repository.dart';
 import 'package:ecommerce_app/features/counter/domain/usecases/get_counter_usecase.dart';
+import 'package:ecommerce_app/features/home/data/repository/home_repository_impl.dart';
+import 'package:ecommerce_app/features/home/domain/repository/home_repository.dart';
+import 'package:ecommerce_app/features/home/domain/use-case/home_usecase.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 
@@ -21,7 +24,11 @@ void initLocator() {
     () => CounterRepositoryImpl(CounterDatasource()),
   );
   locator.registerLazySingleton<AuthRepository>(
-      () => AuthRepositoryImpl(locator()));
+    () => AuthRepositoryImpl(locator()),
+  );
+  locator.registerLazySingleton<HomeRepository>(
+    () => HomeRepositoryImpl(locator()),
+  );
 
   // USECASE
   locator.registerLazySingleton<GetCounterUseCase>(
@@ -29,4 +36,7 @@ void initLocator() {
   );
   locator.registerLazySingleton<SignInUseCase>(() => SignInUseCase(locator()));
   locator.registerLazySingleton<SignUpUseCase>(() => SignUpUseCase(locator()));
+  locator.registerLazySingleton<GetAllCategories>(
+    () => GetAllCategories(locator()),
+  );
 }

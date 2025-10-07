@@ -3,7 +3,7 @@ import 'package:ecommerce_app/common/config/global.dart';
 import 'package:ecommerce_app/features/auth/presentation/screen/login_screen.dart';
 import 'package:ecommerce_app/features/auth/presentation/screen/register_screen.dart';
 import 'package:ecommerce_app/features/auth/presentation/screen/reset_password_screen.dart';
-import 'package:ecommerce_app/features/home/presentation/screens/home_screen.dart';
+import 'package:ecommerce_app/features/home/presentation/screens/main_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
