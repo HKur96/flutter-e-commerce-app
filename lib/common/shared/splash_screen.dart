@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (currentUser == null) {
       Navigator.of(context).pushReplacementNamed(Constant.kRouteLogin);
     } else {
-      Navigator.of(context).pushReplacementNamed(Constant.kHomeScreen);
+      Navigator.of(context).pushReplacementNamed(Constant.kMainScreen);
     }
   }
 

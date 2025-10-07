@@ -47,7 +47,7 @@ class RegisterAvatarWidget extends StatelessWidget {
                       if (user != null && context.mounted) {
                         Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(
-                            builder: (context) => HomeScreen(),
+                            builder: (context) => MainScreen(),
                           ),
                           (route) => false,
                         );

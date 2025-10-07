@@ -30,8 +30,8 @@ class MyRoute {
       case Constant.kRouteResetPassword:
         destinationScreen = (_) => const ResetPasswordScreen();
         break;
-      case Constant.kHomeScreen:
-        destinationScreen = (_) => const HomeScreen();
+      case Constant.kMainScreen:
+        destinationScreen = (_) => const MainScreen();
         break;
 
       default:
