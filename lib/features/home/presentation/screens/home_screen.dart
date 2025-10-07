@@ -1,151 +1,77 @@
 import 'package:ecommerce_app/common/config/extensions.dart';
+import 'package:ecommerce_app/features/home/presentation/widgets/cart_widget.dart';
+import 'package:ecommerce_app/features/home/presentation/widgets/home_widget.dart';
+import 'package:ecommerce_app/features/home/presentation/widgets/settings_widget.dart';
+import 'package:ecommerce_app/features/home/presentation/widgets/wishlist_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  List<String> get listBottomAction => [
-        'assets/icons/ic_btm_home.png',
-        'assets/icons/ic_btm_wishlist.png',
-        'assets/icons/ic_btm_cart.png',
-        'assets/icons/ic_btm_account.png',
+class _MainScreenState extends State<MainScreen> {
+  int _selectedIndex = 0;
+
+  List<Map<String, dynamic>> get _listBottomNavigation => [
+        {'icon': 'assets/icons/ic_btm_home.png', 'label': 'Home'},
+        {'icon': 'assets/icons/ic_btm_wishlist.png', 'label': 'Wishlist'},
+        {'icon': 'assets/icons/ic_btm_cart.png', 'label': 'Cart'},
+        {'icon': 'assets/icons/ic_btm_settings.png', 'label': 'Settings'},
       ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          _buildAppBar(),
-          SliverPadding(
-            padding: EdgeInsets.all(10.0),
-            sliver: SliverList(
-              delegate: SliverChildListDelegate(List.generate(
-                20,
-                (index) => ListTile(
-                  leading: CircleAvatar(child: Text('$index')),
-                  title: Text('Appbar with dynamic height'),
-                ),
-              )),
-            ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: SafeArea(
-        child: Container(
-          padding: const EdgeInsets.only(top: 16),
-          width: context.dw,
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(
-                width: 0.5,
-                color: Colors.grey,
-              ),
-            ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: listBottomAction
-                .map((x) => Image.asset(
-                      x,
+      body: _buildBody(),
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+        ),
+        child: BottomNavigationBar(
+          items: List<BottomNavigationBarItem>.generate(
+              _listBottomNavigation.length,
+              (index) => BottomNavigationBarItem(
+                    icon: Image.asset(
+                      _listBottomNavigation[index]['icon'],
                       height: 24,
-                    ))
-                .toList(),
-          ),
+                      color: (_selectedIndex == index)
+                          ? context.palette.blueOcean
+                          : Colors.black,
+                    ),
+                    label: _listBottomNavigation[index]['label'],
+                  )),
+          onTap: _onItemTapped,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: context.palette.blueOcean,
+          unselectedItemColor: context.disableColor,
+          currentIndex: _selectedIndex,
+          mouseCursor: SystemMouseCursors.click,
         ),
       ),
     );
   }
 
-  Widget _buildAppBar() {
-    return SliverAppBar(
-      automaticallyImplyLeading: false,
-      expandedHeight: 115.0,
-      floating: false,
-      pinned: true,
-      // backgroundColor: Colors.white,
-      flexibleSpace: FlexibleSpaceBar(
-        centerTitle: true,
-        expandedTitleScale: 1.1,
-        title: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 16),
-          padding: const EdgeInsets.symmetric(
-            vertical: 8,
-            horizontal: 12,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            color: Colors.grey.shade200,
-          ),
-          child: Row(
-            children: [
-              Expanded(
-                  child: Text(
-                'Search...',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey.shade400,
-                ),
-              )),
-              Image.asset(
-                'assets/icons/ic_search.png',
-                height: 18,
-              )
-            ],
-          ),
-        ),
-        background: Stack(
-          children: [
-            // Container(
-            //   color: Colors.white,
-            // ),
-            SafeArea(
-              child: Container(
-                padding: const EdgeInsets.only(right: 16, bottom: 16),
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      width: 0.5,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/tumbas.svg',
-                      height: 26,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Image.asset(
-                          'assets/icons/ic_notif.png',
-                          height: 18,
-                        ),
-                        const SizedBox(width: 20),
-                        Image.asset(
-                          'assets/icons/ic_cart.png',
-                          height: 18,
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+  Widget _buildBody() {
+    switch (_selectedIndex) {
+      case 1:
+        return WishlistWidget();
+      case 2:
+        return CartWidget();
+      case 3:
+        return SettingsWidget();
+      default:
+        return HomeWidget();
+    }
   }
 }
