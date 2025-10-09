@@ -39,4 +39,7 @@ void initLocator() {
   locator.registerLazySingleton<GetAllCategories>(
     () => GetAllCategories(locator()),
   );
+  locator.registerLazySingleton<GetAllCollections>(
+    () => GetAllCollections(locator()),
+  );
 }
