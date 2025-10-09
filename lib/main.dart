@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/common/config/global.dart';
 import 'package:ecommerce_app/common/config/route.dart';
 import 'package:ecommerce_app/common/config/theme/app_theme.dart';
+import 'package:ecommerce_app/common/shared/provider/product_provider.dart';
 import 'package:ecommerce_app/common/shared/splash_screen.dart';
 import 'package:ecommerce_app/common/utils/injector.dart';
 import 'package:ecommerce_app/features/auth/presentation/provider/auth_provider.dart';
@@ -46,6 +47,7 @@ class MainApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CounterProvider()),
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => HomeProvider()),
+        ChangeNotifierProvider(create: (_) => ProductProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

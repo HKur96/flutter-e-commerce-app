@@ -1,9 +1,9 @@
 import 'package:ecommerce_app/common/config/enum.dart';
 import 'package:ecommerce_app/common/helper/api_helper.dart';
 import 'package:ecommerce_app/features/home/data/model/category_model.dart';
-import 'package:ecommerce_app/features/home/data/model/collection_model.dart';
+import 'package:ecommerce_app/features/home/data/model/product_model.dart';
 import 'package:ecommerce_app/features/home/domain/entity/category.dart';
-import 'package:ecommerce_app/features/home/domain/entity/collection.dart';
+import 'package:ecommerce_app/features/home/domain/entity/product.dart';
 import 'package:ecommerce_app/features/home/domain/repository/home_repository.dart';
 
 class HomeRepositoryImpl implements HomeRepository {
@@ -25,15 +25,13 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<List<Collection>> fetchCollections(CollectionType collectionType) async {
+  Future<List<Product>> fetchCollections(CollectionType collectionType) async {
     try {
       final res = await _apiHelper.dio.get(
         '/product/collection/${_formatCollectionType(collectionType)}',
       );
 
-      return (res.data['data'] as List)
-          .map<Collection>((col) => CollectionModel.fromJson(col))
-          .toList();
+      return (res.data['data'] as List).map<Product>((col) => ProductModel.fromJson(col)).toList();
     } catch (e) {
       rethrow;
     }

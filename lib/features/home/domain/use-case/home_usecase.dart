@@ -1,7 +1,7 @@
 import 'package:ecommerce_app/common/config/enum.dart';
 import 'package:ecommerce_app/common/shared/base_usecase.dart';
 import 'package:ecommerce_app/features/home/domain/entity/category.dart';
-import 'package:ecommerce_app/features/home/domain/entity/collection.dart';
+import 'package:ecommerce_app/features/home/domain/entity/product.dart';
 import 'package:ecommerce_app/features/home/domain/repository/home_repository.dart';
 
 class GetAllCategories extends BaseUseCase<List<Category>, void> {
@@ -15,12 +15,12 @@ class GetAllCategories extends BaseUseCase<List<Category>, void> {
   }
 }
 
-class GetAllCollections extends BaseUseCase<List<Collection>, CollectionType> {
+class GetAllCollections extends BaseUseCase<List<Product>, CollectionType> {
   final HomeRepository _homeRepository;
   GetAllCollections(this._homeRepository);
 
   @override
-  Future<List<Collection>> call(CollectionType params) {
+  Future<List<Product>> call(CollectionType params) {
     return _homeRepository.fetchCollections(params);
   }
 }

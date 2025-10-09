@@ -1,7 +1,9 @@
+import 'package:ecommerce_app/common/config/enum.dart';
 import 'package:ecommerce_app/common/config/extensions.dart';
 import 'package:ecommerce_app/features/auth/domain/entity/user.dart';
 import 'package:ecommerce_app/features/auth/presentation/provider/auth_provider.dart';
 import 'package:ecommerce_app/features/home/presentation/widgets/categories_home_widget.dart';
+import 'package:ecommerce_app/features/home/presentation/widgets/collection_type_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +25,28 @@ class _HomeWidgetState extends State<HomeWidget> {
       slivers: [
         _buildAppBar(context),
         CategoriesHomeWidget(user: _user),
+        _buildProductCollections(
+          collectionType: CollectionType.bestSellers,
+          title: 'Best Seller',
+        ),
+        _buildProductCollections(
+          collectionType: CollectionType.featured,
+          title: 'Featured',
+        ),
       ],
+    );
+  }
+
+  SliverToBoxAdapter _buildProductCollections({
+    required CollectionType collectionType,
+    required String title,
+  }) {
+    return SliverToBoxAdapter(
+      child: CollectionTypeWidget(
+        title: title,
+        collectionType: collectionType,
+        isRefresh: false,
+      ),
     );
   }
 
