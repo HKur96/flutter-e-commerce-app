@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/common/config/enum.dart';
 import 'package:ecommerce_app/common/config/extensions.dart';
 import 'package:ecommerce_app/features/auth/domain/entity/user.dart';
@@ -29,11 +30,28 @@ class _HomeWidgetState extends State<HomeWidget> {
           collectionType: CollectionType.bestSellers,
           title: 'Best Seller',
         ),
+        _buildDefaultImage(
+            'https://hsubqrdbiopxlgaqmqmt.supabase.co/storage/v1/object/public/image/images/banner_default_1.png'),
         _buildProductCollections(
           collectionType: CollectionType.featured,
           title: 'Featured',
         ),
+        _buildDefaultImage(
+            'https://hsubqrdbiopxlgaqmqmt.supabase.co/storage/v1/object/public/image/images/banner_default_2.png'),
       ],
+    );
+  }
+
+  SliverToBoxAdapter _buildDefaultImage(String imageUrl) {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 16, top: 16),
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          width: double.infinity,
+          fit: BoxFit.fitWidth,
+        ),
+      ),
     );
   }
 
